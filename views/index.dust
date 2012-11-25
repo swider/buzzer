@@ -1,0 +1,10 @@
+{>"layouts/player"/}
+
+{<title}Player Home {title}{/title}
+
+
+{<html_body}
+    <h3>{user}</h3>
+    <div id="first"></div>
+    <a href="#" id="buzz">Buzz!</a>
+{/html_body}

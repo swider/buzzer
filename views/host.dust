@@ -1,0 +1,12 @@
+{>"layouts/host"/}
+
+{<title}Host Home {title}{/title}
+
+
+{<html_body}
+	<h3>Host Page</h3>
+	<h4>First Buzzer: <span id="first"></span></h4>
+	<a href="#" id="reset">Reset Buzzers</a>
+{/html_body}
+
+{<copy}{copy|s}{/copy}

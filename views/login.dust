@@ -1,0 +1,12 @@
+{>"layouts/player"/}
+
+{<title}Login{/title}
+
+{<html_body}
+	<p>Pick a display name!</p>
+	<form method="post">
+		<input type="hidden" name="next" value="{next}" />
+		<input type="text" name="user" />
+		<input type="submit" value="Login" />
+	</form>
+{/html_body}

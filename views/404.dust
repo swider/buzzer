@@ -1,0 +1,7 @@
+{>"layouts/player"/}
+
+{<title}404{/title}
+
+{<html_body}
+	<p>404'd!</p>
+{/html_body}

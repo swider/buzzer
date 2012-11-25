@@ -1,0 +1,97 @@
+.border-radius(@radius: 5px) {
+	-moz-border-radius: @radius; 
+	-webkit-border-radius: @radius; 
+	border-radius: @radius;
+}
+
+.box-shadow(@val) {
+	-moz-box-shadow: @val; 
+	-webkit-box-shadow: @val; 
+	box-shadow: @val;
+}
+
+.box-sizing(@val: border-box) {
+	box-sizing: @val;
+	-ms-box-sizing: @val;
+	-moz-box-sizing: @val;
+	-webkit-box-sizing: @val;
+}
+
+.rotate(@val: 45deg) {
+	-moz-transform: rotate(@val);  /* FF3.5+ */
+	-o-transform: rotate(@val);  /* Opera 10.5 */
+	-webkit-transform: rotate(@val);  /* Saf3.1+, Chrome */
+	//-ms-transform: rotate(@val);  /* IE9 */ Breaks more than it helps...
+	transform: rotate(@val);
+
+	/* IE6-IE8 */
+	@radians: ~`parseInt("@{val}") * Math.PI * 2 / 360`;
+	@costheta: ~`Math.cos("@{radians}")`;
+	@sintheta: ~`Math.sin("@{radians}")`;
+	@negsintheta: ~`"@{sintheta}" * -1`;
+	filter: ~"progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=@{costheta}, M12=@{negsintheta}, M21=@{sintheta}, M22=@{costheta})";
+	zoom: 1;
+}
+
+.transition(@prop: color, @time: 1s, @style: ease-in){
+	-webkit-transition: @prop @time @style;
+	-moz-transition: @prop @time @style;  
+	-o-transition: @prop @time @style;  
+	transition: @prop @time @style;
+}
+
+.gradient-background(@start, @stop){
+	background-color: @start;
+	background-image: -moz-linear-gradient(top, @start, @stop); 
+	background-image: -o-linear-gradient(top, @start, @stop); 
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, @start),color-stop(1, @stop)); 
+	background-image: -webkit-linear-gradient(@start, @stop); 
+	background-image: linear-gradient(top, @start, @stop);
+	//don't pass in values with an alpha channel
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{start}', endColorStr='@{stop}')";
+}
+
+.gradient-background-alpha(@start, @stop){
+	background-color: @start;
+	background-image: -moz-linear-gradient(top, @start, @stop); 
+	background-image: -o-linear-gradient(top, @start, @stop); 
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, @start),color-stop(1, @stop)); 
+	background-image: -webkit-linear-gradient(@start, @stop); 
+	background-image: linear-gradient(top, @start, @stop);
+}
+
+.gradient-background3(@start, @middle, @stop, @middlePos: 50%){
+	background: @start;
+	background: -moz-linear-gradient(top, @start 0%, @middle @middlePos, @stop 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@start), color-stop(@middlePos,@middle), color-stop(100%,@stop));
+	background: -webkit-linear-gradient(top, @start 0%,@middle @middlePos,@stop 100%);
+	background: -o-linear-gradient(top, @start 0%,@middle @middlePos,@stop 100%);
+	background: -ms-linear-gradient(top, @start 0%,@middle @middlePos,@stop 100%);
+	background: linear-gradient(top, @start 0%,@middle @middlePos,@stop 100%);
+	//don't pass in values with an alpha channel
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start}', endColorstr='@{stop}', GradientType=0)";
+}
+
+
+
+
+// -- PRESETS
+
+@btn_blue: #55b;
+@btn_green: #395;
+@btn_red: #b35;
+@btn_black: #333;
+.btn(@color: @btn_blue){
+	display: inline-block;
+	padding: 4px 16px;
+	color: #fff;
+	text-shadow: 0 1px 1px darken(@color, 20%);
+	text-decoration: none;
+	.gradient-background(lighten(@color, 8%), darken(@color, 8%));
+	border: 1px solid @color;
+	.border-radius(2px);
+	.box-shadow(0 2px 2px #000);
+	&:hover {
+		.gradient-background(lighten(@color, 2%), darken(@color, 12%));
+	}
+}

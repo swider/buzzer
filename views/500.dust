@@ -1,0 +1,7 @@
+{>"layouts/player"/}
+
+{<title}500{/title}
+
+{<html_body}
+	<p>500'd!</p>
+{/html_body}
