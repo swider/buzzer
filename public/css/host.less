@@ -60,8 +60,57 @@
 }
 
 #container-inner {
+	#main_left, #main_right {
+		width: 49%;
+		float: left;
+	}
+	#main_right {
+		margin-left: 2%;
+	}
 	height: 300px;
+	padding: 20px;
+	h3.buzzer {
+		padding: 10px;
+		font-size: 24px;
+		margin-bottom: 20px;
+		background: rgba(255,255,255,.4);
+		border: 1px solid rgba(0,0,0,.2);
+		.border-radius(); 
+	}
+	.changePoints, .scoreboard {
+		margin-bottom: 20px;
+		background: rgba(255,255,255,.4);
+		border: 1px solid rgba(0,0,0,.2);
+		.border-radius();
+		td, th {
+			width: 80px;
+			text-align: center;
+			font-size: 20px;
+			border: 1px solid rgba(0,0,0,.2);
+			padding: 10px;
+			.add { color: green; }
+			.sub { color: red; }
+			.add, .sub {
+				text-decoration: none;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		&.hide { display: none; }
+		h5 { font-size: 16px; }
+		.customPtBtn {
+			.btn(@btn_grey);
+			margin: 5px;
+		}
+	}
+	.scoreboard { width: 100%; }
 	#reset {
-		.btn();
+		.btn(@btn_green, @btn_large);
+		margin-top: 20px;
+	}
+	audio {
+		margin: 10px 0 20px;
+		width: 100%;
 	}
 }

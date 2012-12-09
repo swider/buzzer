@@ -4,7 +4,11 @@
 
 
 {<html_body}
-    <h3>{user}</h3>
+	{?user}
+    	<h3>Player: {user} (<a href="/logout">logout</a>)</h3>
+    {:else}
+   		<h3>Not logged in! Try <a href="?">refreshing</a> or <a href="/logout">logging out</a></h3>
+   	{/user}
     <div id="first"></div>
     <a href="#" id="buzz">Buzz!</a>
 {/html_body}

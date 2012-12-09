@@ -3,10 +3,124 @@
 {<title}Host Home {title}{/title}
 
 
-{<html_body}
-	<h3>Host Page</h3>
-	<h4>First Buzzer: <span id="first"></span></h4>
-	<a href="#" id="reset">Reset Buzzers</a>
-{/html_body}
+{<col1}
+	<h3 class="buzzer">First Buzzer: <span id="first"></span></h3>
 
-{<copy}{copy|s}{/copy}
+	<table class="changePoints round1">
+		<tr>
+			<td colspan="2">
+				Round: One &middot; <a  class="changeRound" data-round="2" href="#">Two</a>
+			</td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="100" href="#">100</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-100" href="#">100</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="200" href="#">200</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-200" href="#">200</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="300" href="#">300</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-300" href="#">300</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="400" href="#">400</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-400" href="#">400</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="500" href="#">500</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-500" href="#">500</a></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h5>Custom Change</h5>
+				<input type="text" class="customPts">
+				<a class="customPtBtn add" href="#">+</a>
+				<a class="customPtBtn sub" href="#">-</a>
+			</td>
+		</tr>
+	</table>
+	<table class="changePoints round2 hide">
+		<tr>
+			<td colspan="2">
+				Round: <a class="changeRound" data-round="1" href="#">One</a> &middot; Two
+			</td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="200" href="#">200</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-200" href="#">200</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="400" href="#">400</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-400" href="#">400</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="600" href="#">600</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-600" href="#">600</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="800" href="#">800</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-800" href="#">800</a></td>
+		</tr>
+		<tr>
+			<td><a class="presetPtBtn add" data-amount="1000" href="#">1000</a></td>
+			<td><a class="presetPtBtn sub" data-amount="-1000" href="#">1000</a></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h5>Custom Change</h5>
+				<input type="text" class="customPts">
+				<a class="customPtBtn add" href="#">+</a>
+				<a class="customPtBtn sub" href="#">-</a>
+			</td>
+		</tr>
+	</table>
+
+	<a href="#" id="reset">Reset Buzzers</a>
+
+	{/col1}
+
+	{<col2}
+
+	<table class="scoreboard">
+		<tr>
+			<th>Name</th>
+			<th>Points</th>
+		</tr>
+	</table>
+
+	<h4>Music<h4>
+	<ul>
+		<li>
+			Intro<br />
+			<audio controls preload="auto">
+				<source src="../audio/intro.mp3" type="audio/mpeg">Your browser does not support the audio element.
+			</audio>
+		</li>
+		<li>
+			Board<br />
+			<audio controls preload="auto">
+				<source src="../audio/board.mp3" type="audio/mpeg">Your browser does not support the audio element.
+			</audio>
+		</li>
+		<li>
+			Daily Double<br />
+			<audio controls preload="auto">
+				<source src="../audio/dailydouble.mp3" type="audio/mpeg">Your browser does not support the audio element.
+			</audio>
+		</li>
+		<li>
+			Out of Time<br />
+			<audio controls preload="auto">
+				<source src="../audio/outoftime.mp3" type="audio/mpeg">Your browser does not support the audio element.
+			</audio>
+		</li>
+		<li>
+			Thinking Music<br />
+			<audio controls preload="auto">
+				<source src="../audio/thinking.mp3" type="audio/mpeg">Your browser does not support the audio element.
+			</audio>
+		</li>
+	</ul>
+{/col2}

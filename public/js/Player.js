@@ -17,14 +17,21 @@
 				$buzz.hide();
 				$first.text(msg.user).show();
 			}
+			pointsAwarded = function(msg){
+				onsole.log(msg.pts+" Points Awarded to "+msg.user);
+			}
 			reset = function(msg){
 				$buzz.show();
 				$first.hide();
 			};
 
 		client.subscribe('/buzz', showFirst);
+		client.subscribe('/points', pointsAwarded);
 		client.subscribe('/reset', reset);
 		$buzz.click(buzzIn);
 
+		client.publish('/join', {
+			user: buzzer.user
+		});
 	});
 })();

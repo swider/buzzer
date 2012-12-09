@@ -4,8 +4,8 @@ var
 	dust = require('express-dust'),
 	faye = require('faye'),
 	bayeux = new faye.NodeAdapter({
-		mount:    '/faye',
-		timeout:  45
+		mount: '/faye',
+		timeout: 45
 	}),
 	app = express.createServer();
 bayeux.attach(app);
@@ -17,7 +17,7 @@ bayeux.attach(app);
 app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
-	app.use(express.session({ secret: 'zneak170154', store: memStore({reapInterval: 60*60*24*7})}));
+	app.use(express.session({ secret: 'buzzer170154', store: memStore({reapInterval: 60*60*24*7})}));
 	app.use(app.router);
 	app.use(express.static(__dirname + '/public'));
 	app.use(function(req, res, next){
@@ -53,6 +53,7 @@ app.dynamicHelpers({
 });
 
 dust.makeBase({
+	system_name: 'Schwartz Buzzer System',
 	copy: 'Made by <a href="http://nickswider.com/">Nick Swider</a>.'
 });
 
@@ -79,10 +80,10 @@ function requiresLogin(req, res, next){
 //=== General
 app.get('/', requiresLogin, function(req, res, next) {
 	res.render('index', {
-		title: 'Member Home'
+		title: 'Player Home'
 	});
 });
-app.get('/host', requiresLogin, function(req, res, next) {
+app.get('/host', function(req, res, next) {
 	res.render('host', {
 		title: 'Host Page'
 	});
@@ -114,10 +115,16 @@ app.get('/logout', function(req, res){
 //-------------------
 // Log Pub/Sub
 //-------------------
+bayeux.getClient().subscribe('/join', function(msg) {
+	console.log("> New Player: "+msg.user);
+});
 bayeux.getClient().subscribe('/buzz', function(msg) {
 	console.log("> Buzz from "+msg.user);
 });
-bayeux.getClient().subscribe('/buzz', function(msg) {
+bayeux.getClient().subscribe('/points', function(msg) {
+	console.log("> Points changed: "+msg.user+" "+msg.pts);
+});
+bayeux.getClient().subscribe('/reset', function(msg) {
 	console.log("> Buzzers reset");
 });
 

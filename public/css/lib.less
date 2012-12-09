@@ -79,12 +79,22 @@
 
 @btn_blue: #55b;
 @btn_green: #395;
-@btn_red: #b35;
+@btn_red: #c12;
+@btn_grey: #ccc;
 @btn_black: #333;
-.btn(@color: @btn_blue){
+@btn_small: .8;
+@btn_medium: 1;
+@btn_large: 2;
+@btn_xlarge: 4;
+.btn(@color: @btn_blue, @size: @btn_medium){
+	@font_size: 16px*@size;
 	display: inline-block;
-	padding: 4px 16px;
+	vertical-align: top;
+	margin: 0;
+	padding: 4px*@size 16px*@size;
 	color: #fff;
+	font: italic 500 @font_size Georgia, serif;
+	line-height: 1.3em;
 	text-shadow: 0 1px 1px darken(@color, 20%);
 	text-decoration: none;
 	.gradient-background(lighten(@color, 8%), darken(@color, 8%));
@@ -93,5 +103,6 @@
 	.box-shadow(0 2px 2px #000);
 	&:hover {
 		.gradient-background(lighten(@color, 2%), darken(@color, 12%));
+		text-decoration: none !important;
 	}
 }
